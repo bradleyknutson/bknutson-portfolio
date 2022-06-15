@@ -6,6 +6,7 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
+import { DarkModeToggle } from "../DarkModeToggle";
 
 export const NavHeader = () => {
   return (
@@ -24,6 +25,7 @@ export const NavHeader = () => {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             News
           </Typography>
+          <DarkModeToggle />
           <Button color="inherit">Login</Button>
         </Toolbar>
       </AppBar>
