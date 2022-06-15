@@ -11,7 +11,8 @@ export const resolvers = {
   Query: {
     me: async (_parent: any, args: any, context: any) => {
       if (context.user) {
-        const userData = await User.findOne({ _id: context.user._id }).select(
+        const { _id: userId } = context.user.data;
+        const userData = await User.findOne({ _id: userId }).select(
           "-__v -password"
         );
 
