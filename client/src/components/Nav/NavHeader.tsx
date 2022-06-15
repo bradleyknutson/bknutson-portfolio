@@ -9,6 +9,8 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { DrawerHeader, NavDrawer } from "./NavDrawer";
 import { DarkModeToggle } from "../DarkModeToggle";
 import { Button } from "@mui/material";
+import { useUserContext } from "../../context/useUserContext";
+import { AvatarMenu } from "./AvatarMenu";
 
 const drawerWidth = 240;
 
@@ -67,6 +69,8 @@ export const NavHeader = ({ children }: NavDrawerProps) => {
     setOpen(false);
   };
 
+  const user = useUserContext();
+
   return (
     <Box sx={{ display: "flex" }}>
       <AppBar position="fixed" open={open}>
@@ -85,7 +89,13 @@ export const NavHeader = ({ children }: NavDrawerProps) => {
             Bradley Knutson
           </Typography>
           <DarkModeToggle />
-          <Button color="inherit">Login</Button>
+          {user.loggedIn ? (
+            <AvatarMenu />
+          ) : (
+            <Button href="/login" color="inherit">
+              Login
+            </Button>
+          )}
         </Toolbar>
       </AppBar>
       <NavDrawer
