@@ -38,11 +38,6 @@ export const SignUp = () => {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const userData = new FormData(event.currentTarget);
-    console.log({
-      email: userData.get("email"),
-      password: userData.get("password"),
-      firstName: userData.get("firstName"),
-    });
 
     const { data } = await addUser({
       variables: {
