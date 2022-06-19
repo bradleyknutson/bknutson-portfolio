@@ -12,6 +12,7 @@ import { SignUp } from "./components/Auth/SignUp";
 import { NavHeader } from "./components/Nav/NavHeader";
 import { Theme } from "./themes/Theme";
 import { UserContextProvider } from "./context/UserContextProvider";
+import { PortfolioPage } from "./components/Portfolio/PortfolioPage";
 
 const httpLink = createHttpLink({
   uri: "/graphql",
@@ -42,7 +43,7 @@ function App() {
               <Routes>
                 <Route path="/login" element={<SignIn />} />
                 <Route path="/signup" element={<SignUp />} />
-                <Route path="/" element={<div>Hi</div>} />
+                <Route path="/" element={<PortfolioPage />} />
               </Routes>
             </BrowserRouter>
           </NavHeader>

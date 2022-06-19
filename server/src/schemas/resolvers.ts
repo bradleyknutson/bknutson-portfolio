@@ -4,7 +4,7 @@ import User from "../models/User.js";
 
 interface credentials {
   password: string;
-  email?: string;
+  email: string;
 }
 
 export const resolvers = {

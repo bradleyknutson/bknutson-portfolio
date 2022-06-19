@@ -17,7 +17,7 @@ import { AppBarProps as MuiAppBarProps } from "@mui/material/AppBar";
 const drawerWidth = 240;
 
 interface NavDrawerProps extends MuiAppBarProps {
-  open?: boolean;
+  open: boolean;
   handleDrawerOpen: () => void;
   handleDrawerClose: () => void;
 }
@@ -63,7 +63,7 @@ export const NavDrawer = ({
       </DrawerHeader>
       <Divider />
       <List>
-        {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
+        {["Projects", "Hire Me", "Contact Me"].map((text, index) => (
           <ListItem key={text} disablePadding>
             <ListItemButton>
               <ListItemIcon>
@@ -75,18 +75,6 @@ export const NavDrawer = ({
         ))}
       </List>
       <Divider />
-      <List>
-        {["All mail", "Trash", "Spam"].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
     </Drawer>
   );
 };
