@@ -1,5 +1,6 @@
 import React from "react";
 import { Box, Grid, Paper, styled } from "@mui/material";
+import { Projects } from "./Projects/Projects";
 
 const PortfolioPaper = styled(Paper)(({ theme }) => ({
   textAlign: "center",
@@ -10,14 +11,23 @@ const PortfolioPaper = styled(Paper)(({ theme }) => ({
 
 export const PortfolioPage = () => {
   return (
-    <Grid container spacing={2}>
+    <Grid container spacing={4}>
       <Grid item xs={6}>
         <Box>
-          <PortfolioPaper elevation={12}>My name is Fred</PortfolioPaper>
+          <PortfolioPaper elevation={12}>
+            Bradley Knutson, maybe an image
+          </PortfolioPaper>
         </Box>
       </Grid>
       <Grid item xs={6}>
-        <PortfolioPaper elevation={12}>Here is the second half</PortfolioPaper>
+        <Box>
+          <PortfolioPaper elevation={12}>
+            This is where I'll have a description of who I am and what I do.
+          </PortfolioPaper>
+        </Box>
+      </Grid>
+      <Grid item xs={12}>
+        <Projects />
       </Grid>
     </Grid>
   );
