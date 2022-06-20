@@ -24,6 +24,7 @@ const userSchema = new Schema(
     },
     admin: {
       type: Boolean,
+      default: false,
     },
   },
   // set this to use virtual below

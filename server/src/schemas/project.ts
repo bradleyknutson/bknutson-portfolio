@@ -1,4 +1,4 @@
-import { gql } from "apollo-server-express";
+import { AuthenticationError, gql } from "apollo-server-express";
 import Project from "../models/Project.js";
 
 export const typeDefs = gql`
@@ -31,8 +31,11 @@ export const typeDefs = gql`
 export const resolvers = {
   Query: {
     allProjects: async (_parent: any, args: any, context: any) => {
-      const projects = await Project.find();
-      return projects;
+      if (context.user && context.user.data.admin) {
+        const projects = await Project.find();
+        return projects;
+      }
+      throw new AuthenticationError("Not an admin");
     },
   },
   Mutation: {
