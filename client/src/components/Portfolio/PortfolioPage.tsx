@@ -1,6 +1,7 @@
 import React from "react";
 import { Box, Grid, Paper, styled } from "@mui/material";
 import { Projects } from "./Projects/Projects";
+import { ProjectForm } from "./Projects/ProjectForm";
 
 const PortfolioPaper = styled(Paper)(({ theme }) => ({
   textAlign: "center",
@@ -28,6 +29,9 @@ export const PortfolioPage = () => {
       </Grid>
       <Grid item xs={12}>
         <Projects />
+      </Grid>
+      <Grid item xs={12}>
+        <ProjectForm />
       </Grid>
     </Grid>
   );

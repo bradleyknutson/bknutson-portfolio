@@ -25,6 +25,7 @@ export const typeDefs = gql`
 
   extend type Mutation {
     createProject(projectInput: ProjectInput): Project
+    deleteProject(projectId: ID!): Project
   }
 `;
 
@@ -44,8 +45,17 @@ export const resolvers = {
       { projectInput }: any,
       context: any
     ) => {
-      const newProject = await Project.create(projectInput);
-      return newProject;
+      if (context.user && context.user.data.admin) {
+        const newProject = await Project.create(projectInput);
+        return newProject;
+      }
+      throw new AuthenticationError("Not an admin");
+    },
+    deleteProject: async (_parent: any, { projectId }: any, context: any) => {
+      if (context.user && context.user.data.admin) {
+        const deletedProject = await Project.deleteOne({ _id: projectId });
+        return deletedProject;
+      }
     },
   },
 };

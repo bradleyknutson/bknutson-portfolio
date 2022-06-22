@@ -7,6 +7,9 @@ import {
 } from "./project.js";
 import { typeDefs as Auth, resolvers as authResolvers } from "./auth.js";
 
+const { Query: authQuery, Mutation: authMutation } = authResolvers;
+const { Query: projectQuery, Mutation: projectMutation } = projectResolvers;
+
 export const typeDefs = gql`
   type Query {
     _empty: String
@@ -18,8 +21,8 @@ export const typeDefs = gql`
 `;
 
 const resolvers = {
-  Query: { ...userResolvers.Query, ...projectResolvers.Query },
-  Mutation: { ...authResolvers.Mutation, ...projectResolvers.Mutation },
+  Query: { ...authQuery, ...projectQuery },
+  Mutation: { ...authMutation, ...projectMutation },
 };
 
 export const schema = makeExecutableSchema({
