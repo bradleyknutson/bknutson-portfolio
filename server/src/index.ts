@@ -1,6 +1,8 @@
 import "dotenv/config";
 import express from "express";
 import { ApolloServer } from "apollo-server-express";
+// @ts-ignore
+import graphqlUploadExpress from "graphql-upload/graphqlUploadExpress.js";
 import path from "path";
 
 import { authMiddleware } from "./utils/auth.js";
@@ -12,6 +14,7 @@ const PORT = process.env.PORT || 3001;
 
 const server = new ApolloServer({
   schema,
+  csrfPrevention: true,
   context: authMiddleware,
 });
 
@@ -24,6 +27,7 @@ if (process.env.NODE_ENV === "production") {
 
 const startApolloServer = async () => {
   await server.start();
+  app.use(graphqlUploadExpress());
   server.applyMiddleware({ app });
 
   db.once("open", () => {

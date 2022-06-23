@@ -1,5 +1,7 @@
 import { gql } from "apollo-server-express";
 import { makeExecutableSchema } from "@graphql-tools/schema";
+// @ts-ignore
+import GraphQLUpload from "graphql-upload/GraphQLUpload.js";
 import { typeDefs as User, resolvers as userResolvers } from "./user.js";
 import {
   typeDefs as Project,
@@ -12,6 +14,7 @@ const { Query: projectQuery, Mutation: projectMutation } = projectResolvers;
 const { Query: userQuery } = userResolvers;
 
 export const typeDefs = gql`
+  scalar Upload
   type Query {
     _empty: String
   }
@@ -22,6 +25,7 @@ export const typeDefs = gql`
 `;
 
 const resolvers = {
+  Upload: GraphQLUpload,
   Query: { ...authQuery, ...projectQuery, ...userQuery },
   Mutation: { ...authMutation, ...projectMutation },
 };

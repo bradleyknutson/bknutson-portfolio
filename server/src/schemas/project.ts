@@ -8,7 +8,12 @@ export const typeDefs = gql`
     description: String!
     github: String!
     demo: String!
-    image: String!
+    image: File!
+  }
+  type File {
+    filename: String!
+    mimetype: String!
+    encoding: String!
   }
 
   input ProjectInput {
@@ -16,7 +21,7 @@ export const typeDefs = gql`
     description: String!
     github: String!
     demo: String!
-    image: String!
+    image: Upload!
   }
 
   extend type Query {
