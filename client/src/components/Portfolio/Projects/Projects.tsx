@@ -57,7 +57,7 @@ export const Projects = () => {
   return (
     <Grid container spacing={4} justifyContent="space-between">
       {projectList.map((project) => (
-        <Grid item md={4}>
+        <Grid key={project.title} item md={4}>
           <Paper elevation={12}>
             <ProjectCard
               description={project.desription}

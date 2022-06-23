@@ -9,6 +9,7 @@ import { typeDefs as Auth, resolvers as authResolvers } from "./auth.js";
 
 const { Query: authQuery, Mutation: authMutation } = authResolvers;
 const { Query: projectQuery, Mutation: projectMutation } = projectResolvers;
+const { Query: userQuery } = userResolvers;
 
 export const typeDefs = gql`
   type Query {
@@ -21,7 +22,7 @@ export const typeDefs = gql`
 `;
 
 const resolvers = {
-  Query: { ...authQuery, ...projectQuery },
+  Query: { ...authQuery, ...projectQuery, ...userQuery },
   Mutation: { ...authMutation, ...projectMutation },
 };
 
