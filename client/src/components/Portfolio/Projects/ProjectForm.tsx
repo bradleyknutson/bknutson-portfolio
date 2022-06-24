@@ -13,7 +13,6 @@ export const ProjectForm = () => {
   const projectStateHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.name) {
       setProjectData({ ...projectData, [e.target.name]: e.target.value });
-      console.log(projectData);
     }
   };
 
